@@ -1,0 +1,20 @@
+<resources>
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.NoActionBar">
+        <!-- API 14 theme customizations can go here. -->
+    </style>
+
+	<style name="TextStyle">
+		<item name="android:ellipsize">end</item>
+		<item name="android:maxLines">2</item>
+		<item name="android:textSize">30sp</item>
+		<item name="android:fontFamily">sans-serif-light</item>
+
+	</style>
+
+</resources>

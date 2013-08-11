@@ -1,0 +1,18 @@
+<resources>
+
+
+    <style name="AppBaseTheme" parent="android:Theme.Black">
+
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+
+	<style name="TextStyle">
+		<item name="android:ellipsize">end</item>
+		<item name="android:maxLines">2</item>
+		<item name="android:textSize">30sp</item>
+	</style>
+
+</resources>

@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"
+		android:orientation="vertical">
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/enter_text"
+	        android:textColor="@color/holo_blue"
+			style="@style/TextStyle"/>
+
+
+		<LinearLayout
+			android:layout_marginTop="30dp"
+			android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="30"
+			    style="@style/TextStyle"
+			    android:textSize="15sp"
+			    android:layout_gravity="center_vertical"
+				android:text="@string/speedRate"/>
+
+			<SeekBar
+				android:id="@+id/speech_rate"
+				android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="70"
+			    android:max="200"
+			    android:progress="100"
+			    android:layout_gravity="center_vertical"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+			<TextView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="30"
+					style="@style/TextStyle"
+					android:textSize="15sp"
+					android:layout_gravity="center_vertical"
+					android:text="@string/pitch"/>
+
+			<SeekBar
+					android:id="@+id/pitch"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="70"
+					android:max="30"
+					android:progress="15"
+					android:layout_gravity="center_vertical"/>
+		</LinearLayout>
+
+		<EditText
+			android:id="@+id/input_text"
+			android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+			android:inputType="text"
+			android:layout_marginTop="30dp"
+			android:textSize="20sp"
+			android:hint="@string/hint"
+			style="@style/TextStyle">
+	    </EditText>
+	</LinearLayout>
+
+	<Button
+			android:id="@+id/speech_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/button_speech"
+			android:textSize="20sp"
+			android:layout_marginTop="30dp"
+			style="@style/TextStyle">
+	</Button>
+
+
+
+
+</LinearLayout>
