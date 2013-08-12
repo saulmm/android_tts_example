@@ -17,4 +17,4 @@ Refs
 
 http://developer.android.com/reference/android/speech/tts/TextToSpeech.html
 http://mobile.tutsplus.com/tutorials/android/android-sdk-using-the-text-to-speech-engine/
-Everything up-to-dateEverything up-to-date
+http://developer.android.com/reference/android/speech/RecognizerIntent.html

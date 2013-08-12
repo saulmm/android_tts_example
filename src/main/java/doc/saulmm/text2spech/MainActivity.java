@@ -108,7 +108,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 	 */
 	private void showResultDialog (String text) {
 		AlertDialog.Builder dBuilder = new AlertDialog.Builder(this);
-		dBuilder.setMessage("Result: \n"+text);
+		dBuilder.setTitle("Speect to text example");
+		dBuilder.setMessage(text);
 		dBuilder.setPositiveButton("Accept",null);
 		dBuilder.create().show();
 	}
@@ -165,10 +166,18 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 	}
 
 
+	/**
+	 * Inits the intent with text recognition
+	 */
 	private void talkToText () {
 		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
+		// Extra options
 		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+//		intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 2000000);
+//      intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 2000000);
+//		intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text example"); // Text message in the recognition dialog
 
 		try {
 			startActivityForResult(intent, RESULT_TALK_CODE);
