@@ -4,12 +4,12 @@ Text to speech example
 - Simple speech
 - Change the pith
 - Change the speed rate
-- [Future] Voice to text
+- Voice to text
 
 MainActivity:
 ----------------
 
-![Alt text](https://googledrive.com/host/0B62SZ3WRM2R2MGp4UVppZmI4OTg/ttss_v_small.png)
+![Alt text](https://googledrive.com/host/0B62SZ3WRM2R2MGp4UVppZmI4OTg/stt_small.png)
 
 
 Refs
