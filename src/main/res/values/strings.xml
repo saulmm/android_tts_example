@@ -5,9 +5,11 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 	<string name="enter_text">Android TTS Example</string>
+	<string name="talk_text">Android STT Example</string>
 	<string name="button_speech">Speak !!</string>
 	<string name="speedRate">Speech rate</string>
 	<string name="pitch">Pitch</string>
 	<string name="hint">Some text to speak</string>
+	<string name="sst_hint">Tap to talk</string>
 
 </resources>

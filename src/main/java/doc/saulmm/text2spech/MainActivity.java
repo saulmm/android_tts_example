@@ -1,29 +1,33 @@
 package doc.saulmm.text2spech;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.Toast;
+import android.widget.*;
 
-import static android.util.Log.*;
+import java.util.ArrayList;
+
+import static android.util.Log.d;
 
 public class MainActivity extends Activity implements View.OnClickListener, TextToSpeech.OnInitListener, SeekBar.OnSeekBarChangeListener {
 	// TTS Stuff
 	private UtteranceProgressListener uteranceListener;
 	private int TTS_DATA_CHECK_CODE = 0;
+	private int RESULT_TALK_CODE = 1;
 	private TextToSpeech myTTS;
 
 
 	// UI Stuff
 	private EditText speechEdit;
+	private ImageButton talkToTextButton;
 	private Button speechButton;
 	private SeekBar speechRateSeekBar;
 	private SeekBar pitchSeekBar;
@@ -47,6 +51,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 		speechEdit = (EditText) findViewById(R.id.input_text);
 		speechEdit.setText("Android text to speech is working !!!");
 		speechButton.setOnClickListener(this);
+
+		talkToTextButton = (ImageButton) findViewById(R.id.talk_text);
+		talkToTextButton.setOnClickListener(this);
 
 		speechRateSeekBar = (SeekBar) findViewById(R.id.speech_rate);
 		speechRateSeekBar.setOnSeekBarChangeListener(this);
@@ -86,8 +93,24 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 				installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
 				startActivity(installTTSIntent);
 			}
+
+		} else if(requestCode == RESULT_TALK_CODE && data != null) {
+				ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+				showResultDialog(text.get(0));
 		}
 
+	}
+
+	/**
+	 * Shows a dialog with the result text
+	 * @param text
+	 */
+	private void showResultDialog (String text) {
+		AlertDialog.Builder dBuilder = new AlertDialog.Builder(this);
+		dBuilder.setMessage("Result: \n"+text);
+		dBuilder.setPositiveButton("Accept",null);
+		dBuilder.create().show();
 	}
 
 
@@ -133,6 +156,28 @@ public class MainActivity extends Activity implements View.OnClickListener, Text
 			case R.id.speech_button:
 				speech(speechEdit.getText().toString());
 				break;
+
+
+			case R.id.talk_text:
+				talkToText();
+				break;
+		}
+	}
+
+
+	private void talkToText () {
+		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+
+		try {
+			startActivityForResult(intent, RESULT_TALK_CODE);
+
+		} catch (ActivityNotFoundException a) {
+			Toast t = Toast.makeText(getApplicationContext(),
+					"Opps! Your device doesn't support Speech to Text",
+					Toast.LENGTH_SHORT);
+			t.show();
 		}
 	}
 
